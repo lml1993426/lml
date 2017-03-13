@@ -413,8 +413,8 @@
         }
         .lml-p2{
             position: absolute;
-            left: 4.25rem;
-            top: 17.56rem;
+            left: 4.3rem;
+            top: 17.65rem;
             z-index: 99999;
             font-size: 0.4rem;
             line-height:0.4rem;
@@ -423,7 +423,7 @@
         .lml-p3{
             position: absolute;
             left: 5.28rem;
-            top: 28rem;
+            top: 28.25rem;
             z-index: 99999;
             font-size: 0.61rem;
             line-height:0.61rem;
@@ -432,8 +432,8 @@
         }
         .lml-p4{
             position: absolute;
-            left: 5.98rem;
-            top: 31.07rem;
+            left: 6rem;
+            top: 31.17rem;
             z-index: 99999;
             font-size: 0.4rem;
             line-height:0.4rem;
@@ -451,7 +451,7 @@
         .lml-p6{
             position: absolute;
             left: 6rem;
-            top: 24.85rem;
+            top: 24.93rem;
             font-size: 0.45rem;
             line-height:1;
             font-weight:bold;
@@ -533,7 +533,7 @@
         <ul class="content J_tb_targetlist slide_img">
             <li class="on lml-li00">
                 <a href="javascript:void(0)" target="_blank">
-                    <div class="front"><img src="https://gw.alicdn.com/tps/TB1Qp6.PVXXXXchXFXXXXXXXXXX-390-510.png" alt="图片" width="100%" class="front"></div>
+                    <div class="front"><img src="https://gw.alicdn.com/tps/TB1Ow7DPVXXXXbQapXXXXXXXXXX-390-510.png" alt="图片" width="100%" class="front"></div>
                     <div class="back"> <img src="" alt="" width="100%"></div>
                     <div class="lml-btn back"  style="display:none;">选择此牌</div>
                     <div class="lml-btn front"  style="display:none;">选择此牌</div>
@@ -541,7 +541,7 @@
             </li>
             <li class="on lml-li11">
                 <a href="javascript:void(0)"  target="_blank">
-                    <div class="front"><img src="https://gw.alicdn.com/tps/TB1RZb7PVXXXXabXVXXXXXXXXXX-390-510.png" alt="图片" width="100%"></div>
+                    <div class="front"><img src="https://gw.alicdn.com/tps/TB10CU0PVXXXXbCXpXXXXXXXXXX-390-510.png" alt="图片" width="100%"></div>
                     <div class="back"> <img src="" alt=""></div>
                     <div class="lml-btn back"  style="display:none;">选择此牌</div>
                     <div class="lml-btn front"  style="display:none;">选择此牌</div>
@@ -616,7 +616,7 @@
         var _self=this;
         //获取数据
         if(bool){
-            chouse3(_self);
+            chouse1(_self);
         }
         else{
             chouse2(_self);
@@ -624,7 +624,7 @@
         var index=$(_self).parents("li").index();
         var img_url=$(_self).parents("li").find(".back img").attr("src");//设置
         var success_img="https://gw.alicdn.com/tps/TB1TUwdPVXXXXaqaXXXXXXXXXXX-390-510.png";
-        var no_success_img="https://gw.alicdn.com/tps/TB1St3fPVXXXXcIXVXXXXXXXXXX-390-510.png";
+        var no_success_img="https://gw.alicdn.com/tps/TB1xaU.PVXXXXcyXpXXXXXXXXXX-390-510.png";
         $(_self).parents("a").addClass("lml-zhuan");
 
 
@@ -650,7 +650,7 @@
 
 
     function chouse1(_self){
-        var img_url1 = Math.random() >= 0.5 ?　'https://gw.alicdn.com/tps/TB1TUwdPVXXXXaqaXXXXXXXXXXX-390-510.png' : 'https://gw.alicdn.com/tps/TB1St3fPVXXXXcIXVXXXXXXXXXX-390-510.png';
+        var img_url1 = Math.random() >= 0.5 ?　'https://gw.alicdn.com/tps/TB1TUwdPVXXXXaqaXXXXXXXXXXX-390-510.png' : 'https://gw.alicdn.com/tps/TB1xaU.PVXXXXcyXpXXXXXXXXXX-390-510.png';
         $(_self).parents("li").find(".back img").attr({"src":img_url1});
     }
     function chouse2(_self){
@@ -658,7 +658,7 @@
         $(_self).parents("li").find(".back img").attr({"src":img_url2});
     }
     function chouse3(_self){
-        var img_url3 = "https://gw.alicdn.com/tps/TB1St3fPVXXXXcIXVXXXXXXXXXX-390-510.png";
+        var img_url3 = "https://gw.alicdn.com/tps/TB1xaU.PVXXXXcyXpXXXXXXXXXX-390-510.png";
         $(_self).parents("li").find(".back img").attr({"src":img_url3});
     }
 
@@ -855,7 +855,7 @@
             //增加的按钮
             if($("li").eq(0).find(".back img").attr("src")!="https://gw.alicdn.com/tps/TB1TUwdPVXXXXaqaXXXXXXXXXXX-390-510.png"&&$("li").eq(1).find(".back img").attr("src")!="https://gw.alicdn.com/tps/TB1TUwdPVXXXXaqaXXXXXXXXXXX-390-510.png"&&$("li").eq(2).find(".back img").attr("src")!="https://gw.alicdn.com/tps/TB1TUwdPVXXXXaqaXXXXXXXXXXX-390-510.png") {
 
-                if ($("li").eq(number).find(".back img").attr("src") != "https://gw.alicdn.com/tps/TB1St3fPVXXXXcIXVXXXXXXXXXX-390-510.png") {
+                if ($("li").eq(number).find(".back img").attr("src") != "https://gw.alicdn.com/tps/TB1xaU.PVXXXXcyXpXXXXXXXXXX-390-510.png") {
                     $("li").eq(number).find(".lml-btn").show();
                     $("li").eq(number).siblings("li").find(".lml-btn").hide();
                 }
