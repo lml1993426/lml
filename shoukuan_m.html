@@ -108,7 +108,7 @@
             margin-left:-1.44rem;
             width:2.88rem;
             height:0.97rem;
-            background: url("https://gw.alicdn.com/tps/TB19irYPVXXXXbCaXXXXXXXXXXX-216-71.png") center top no-repeat;
+            background: url("https://gw.alicdn.com/tps/TB1QtgFPVXXXXbhapXXXXXXXXXX-216-71.png") center top no-repeat;
             background-size: 100% 100%;
             font-size: 0.37rem;
             color:#ffffff;
@@ -154,7 +154,7 @@
             height:100%;
         }
         .flipper {
-            transition:transform 0.6s ease-out;
+            transition:transform 0.5s ease-out;
             -webkit-transition: transform .5s ease-in-out;
             -moz-transition: transform .5s ease-in-out;
             -ms-transition: transform .5s ease-in-out;
@@ -599,7 +599,7 @@
         jQuery("li").eq(0).addClass("lml-li0");
         jQuery("li").eq(2).addClass("lml-li2");
         setTimeout(function(){
-            jQuery("ul").css({"margin-top": "-0.6rem"});
+            jQuery("ul").css({"margin-top": "-0.95rem"});
         },500);
 
         bool=true;
@@ -624,13 +624,17 @@
         else{
             chouse2(_self);
         }
+
         var index=jQuery(_self).parents("li").index();
         var img_url=jQuery(_self).parents("li").find(".back img").attr("src");//设置
         var success_img="https://gw.alicdn.com/tps/TB1TUwdPVXXXXaqaXXXXXXXXXXX-390-510.png";
         var no_success_img="https://gw.alicdn.com/tps/TB1xaU.PVXXXXcyXpXXXXXXXXXX-390-510.png";
         jQuery(_self).parents("a").addClass("lml-zhuan");
 
-
+        if(jQuery(_self).parents("li").find(".back img").attr("src") == "https://gw.alicdn.com/tps/TB1TUwdPVXXXXaqaXXXXXXXXXXX-390-510.png"){
+            jQuery(".lml-shouzhi").hide()
+        }
+        console.log(jQuery(_self).parents("li").find(".back img"))
         if(img_url==success_img){
             success(_self);
         }
@@ -641,7 +645,7 @@
     })
 
     function success(_self){
-        jQuery(_self).parents("li").find(".lml-btn.back").show().text("立即开通")
+        jQuery(_self).parents("li").find(".lml-btn.back").show().text("立即开通");
         setTimeout(function(){
             jQuery(_self).parents("li").find("a").attr({"href":"aliim:directuseplugin?appkey=23263791"});
         },500);
@@ -854,7 +858,6 @@
 //                    pos_dex(number)
 //                },speed)
                 }
-
             //增加的按钮
             if(jQuery("li").eq(0).find(".back img").attr("src")!="https://gw.alicdn.com/tps/TB1TUwdPVXXXXaqaXXXXXXXXXXX-390-510.png"&&jQuery("li").eq(1).find(".back img").attr("src")!="https://gw.alicdn.com/tps/TB1TUwdPVXXXXaqaXXXXXXXXXXX-390-510.png"&&jQuery("li").eq(2).find(".back img").attr("src")!="https://gw.alicdn.com/tps/TB1TUwdPVXXXXaqaXXXXXXXXXXX-390-510.png") {
 
@@ -867,6 +870,7 @@
                 }
 
             }
+
         }, false);
         function ss(){
             number=number+1;
