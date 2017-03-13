@@ -282,6 +282,28 @@
             animation:li0 1s both  linear;
 
         }
+        @-webkit-keyframes li0{
+            0%{
+                -webkit-transform:translateX(0);
+                transform:translateX(0);
+
+            }
+            25%{
+                -webkit-transform:translateX(2.6rem);
+            translateX(2.6rem);
+
+            }
+            50%{
+                -webkit-transform:translateX(0);
+            translateX(0);
+
+            }
+            100%{
+                -webkit-transform:translateX(2.6rem);
+            translateX(2.6rem);
+
+            }
+        }
         @keyframes li0{
             0%{
                 -webkit-transform:translateX(0);
@@ -304,28 +326,7 @@
 
             }
         }
-        @-webkit-keyframes li0{
-            0%{
-                -webkit-transform:translateX(0);
-                transform:translateX(0);
 
-            }
-            25%{
-                -webkit-transform:translateX(2.6rem);
-                translateX(2.6rem);
-
-            }
-            50%{
-                -webkit-transform:translateX(0);
-                translateX(0);
-
-            }
-            100%{
-                -webkit-transform:translateX(2.6rem);
-                translateX(2.6rem);
-
-            }
-        }
         .lml-li2{
             -webkit-animation:li2 1s both  linear;
             animation:li2 1s both  linear;
@@ -356,7 +357,6 @@
             0%{
                 -webkit-transform:translateX(0);
                 transform:translateX(0);
-
             }
             25%{
                 -webkit-transform:translateX(-2.6rem);
@@ -370,7 +370,7 @@
             }
             100%{
                 -webkit-transform:translateX(-2.6rem);
-                translateX(-2.6rem);
+            translateX(-2.6rem);
 
             }
         }
@@ -594,17 +594,20 @@
         jQuery(".lml-mengceng").hide();
     })
     var bool;
-    $(".lml-bluebtn").on("click",function(){
-        $(".lml-bluebtn").hide();
-        $("li").eq(0).addClass("lml-li0");
-        $("li").eq(2).addClass("lml-li2");
-        $("ul").css({"margin-top": "-27px"});
+    jQuery(".lml-bluebtn").on("click",function(){
+        jQuery(".lml-bluebtn").hide();
+        jQuery("li").eq(0).addClass("lml-li0");
+        jQuery("li").eq(2).addClass("lml-li2");
+        setTimeout(function(){
+            jQuery("ul").css({"margin-top": "-0.6rem"});
+        },500);
+
         bool=true;
         setTimeout(function(){
-            i_slide($(".container_image"),newoption);
+            i_slide(jQuery(".container_image"),newoption);
 //            默认的按钮
-            $("li").eq(2).find(".lml-btn").show();
-            $("li").eq(2).siblings("li").find(".lml-btn").hide();
+            jQuery("li").eq(2).find(".lml-btn").show();
+            jQuery("li").eq(2).siblings("li").find(".lml-btn").hide();
         },500);
 
 
@@ -612,7 +615,7 @@
 
 
 
-    $(".lml-btn").on("click",function(){
+    jQuery(".lml-btn").on("click",function(){
         var _self=this;
         //获取数据
         if(bool){
@@ -621,11 +624,11 @@
         else{
             chouse2(_self);
         }
-        var index=$(_self).parents("li").index();
-        var img_url=$(_self).parents("li").find(".back img").attr("src");//设置
+        var index=jQuery(_self).parents("li").index();
+        var img_url=jQuery(_self).parents("li").find(".back img").attr("src");//设置
         var success_img="https://gw.alicdn.com/tps/TB1TUwdPVXXXXaqaXXXXXXXXXXX-390-510.png";
         var no_success_img="https://gw.alicdn.com/tps/TB1xaU.PVXXXXcyXpXXXXXXXXXX-390-510.png";
-        $(_self).parents("a").addClass("lml-zhuan");
+        jQuery(_self).parents("a").addClass("lml-zhuan");
 
 
         if(img_url==success_img){
@@ -638,28 +641,28 @@
     })
 
     function success(_self){
-        $(_self).parents("li").find(".lml-btn.back").show().text("立即开通")
+        jQuery(_self).parents("li").find(".lml-btn.back").show().text("立即开通")
         setTimeout(function(){
-            $(_self).parents("li").find("a").attr({"href":"aliim:directuseplugin?appkey=23263791"});
+            jQuery(_self).parents("li").find("a").attr({"href":"aliim:directuseplugin?appkey=23263791"});
         },500);
     }
     function fail(_self){
-        $(_self).parents("li").find(".lml-btn").hide();
+        jQuery(_self).parents("li").find(".lml-btn").hide();
     }
 
 
 
     function chouse1(_self){
         var img_url1 = Math.random() >= 0.5 ?　'https://gw.alicdn.com/tps/TB1TUwdPVXXXXaqaXXXXXXXXXXX-390-510.png' : 'https://gw.alicdn.com/tps/TB1xaU.PVXXXXcyXpXXXXXXXXXX-390-510.png';
-        $(_self).parents("li").find(".back img").attr({"src":img_url1});
+        jQuery(_self).parents("li").find(".back img").attr({"src":img_url1});
     }
     function chouse2(_self){
         var img_url2 = "https://gw.alicdn.com/tps/TB1TUwdPVXXXXaqaXXXXXXXXXXX-390-510.png";
-        $(_self).parents("li").find(".back img").attr({"src":img_url2});
+        jQuery(_self).parents("li").find(".back img").attr({"src":img_url2});
     }
     function chouse3(_self){
         var img_url3 = "https://gw.alicdn.com/tps/TB1xaU.PVXXXXcyXpXXXXXXXXXX-390-510.png";
-        $(_self).parents("li").find(".back img").attr({"src":img_url3});
+        jQuery(_self).parents("li").find(".back img").attr({"src":img_url3});
     }
 
     function i_slide(obj,opt){
@@ -684,7 +687,7 @@
         var T;
         var start;
         //参数初始化,看是否有新的参数传入，传入则更新初始化设置
-        var opts = $.extend(option, opt || {});
+        var opts = jQuery.extend(option, opt || {});
         var speed=opts.speed;
         var a_speed=opts.a_speed;
         var conuntW=opts.conuntW;//整体内容宽度
@@ -757,7 +760,7 @@
             var now=0;
             for(var i=0;i<chi.length;i++){
                 var li=chi[i];
-                if($(li).hasClass("on")){
+                if(jQuery(li).hasClass("on")){
                     now=i;
                 }
             }
@@ -844,7 +847,7 @@
                     number=number+1;
                 }
             }
-                if(self.canswitch&&$("li").eq(0).find(".back img").attr("src")!="https://gw.alicdn.com/tps/TB1TUwdPVXXXXaqaXXXXXXXXXXX-390-510.png"&&$("li").eq(1).find(".back img").attr("src")!="https://gw.alicdn.com/tps/TB1TUwdPVXXXXaqaXXXXXXXXXXX-390-510.png"&&$("li").eq(2).find(".back img").attr("src")!="https://gw.alicdn.com/tps/TB1TUwdPVXXXXaqaXXXXXXXXXXX-390-510.png"){
+                if(self.canswitch&&jQuery("li").eq(0).find(".back img").attr("src")!="https://gw.alicdn.com/tps/TB1TUwdPVXXXXaqaXXXXXXXXXXX-390-510.png"&&jQuery("li").eq(1).find(".back img").attr("src")!="https://gw.alicdn.com/tps/TB1TUwdPVXXXXaqaXXXXXXXXXXX-390-510.png"&&jQuery("li").eq(2).find(".back img").attr("src")!="https://gw.alicdn.com/tps/TB1TUwdPVXXXXaqaXXXXXXXXXXX-390-510.png"){
                     pos_dex(number);
 //                T= setInterval(function(){
 //                    ss();
@@ -853,14 +856,14 @@
                 }
 
             //增加的按钮
-            if($("li").eq(0).find(".back img").attr("src")!="https://gw.alicdn.com/tps/TB1TUwdPVXXXXaqaXXXXXXXXXXX-390-510.png"&&$("li").eq(1).find(".back img").attr("src")!="https://gw.alicdn.com/tps/TB1TUwdPVXXXXaqaXXXXXXXXXXX-390-510.png"&&$("li").eq(2).find(".back img").attr("src")!="https://gw.alicdn.com/tps/TB1TUwdPVXXXXaqaXXXXXXXXXXX-390-510.png") {
+            if(jQuery("li").eq(0).find(".back img").attr("src")!="https://gw.alicdn.com/tps/TB1TUwdPVXXXXaqaXXXXXXXXXXX-390-510.png"&&jQuery("li").eq(1).find(".back img").attr("src")!="https://gw.alicdn.com/tps/TB1TUwdPVXXXXaqaXXXXXXXXXXX-390-510.png"&&jQuery("li").eq(2).find(".back img").attr("src")!="https://gw.alicdn.com/tps/TB1TUwdPVXXXXaqaXXXXXXXXXXX-390-510.png") {
 
-                if ($("li").eq(number).find(".back img").attr("src") != "https://gw.alicdn.com/tps/TB1xaU.PVXXXXcyXpXXXXXXXXXX-390-510.png") {
-                    $("li").eq(number).find(".lml-btn").show();
-                    $("li").eq(number).siblings("li").find(".lml-btn").hide();
+                if (jQuery("li").eq(number).find(".back img").attr("src") != "https://gw.alicdn.com/tps/TB1xaU.PVXXXXcyXpXXXXXXXXXX-390-510.png") {
+                    jQuery("li").eq(number).find(".lml-btn").show();
+                    jQuery("li").eq(number).siblings("li").find(".lml-btn").hide();
                 }
                 else {
-                    $("li").find(".lml-btn").hide();
+                    jQuery("li").find(".lml-btn").hide();
                 }
 
             }
@@ -877,12 +880,12 @@
     var newoption={
         speed:"3000",//间隔运动时间
         a_speed:"200",//运动时间
-        conuntW:$('.container_image').width(),//整体内容宽度
-        countH:$('.container_image').height(),//整体内容高度
-        w1:$('.on').width(),//大图宽度
-        h1:$('.on').height(),//大图高度
-        w2:$('.on').width()/1.1,//小图宽度
-        h2:$('.on').height()/1.1//小图高度
+        conuntW:jQuery('.container_image').width(),//整体内容宽度
+        countH:jQuery('.container_image').height(),//整体内容高度
+        w1:jQuery('.on').width(),//大图宽度
+        h1:jQuery('.on').height(),//大图高度
+        w2:jQuery('.on').width()/1.1,//小图宽度
+        h2:jQuery('.on').height()/1.1//小图高度
     }
 
 
