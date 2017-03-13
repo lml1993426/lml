@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>收款增至 不留余地</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0"/>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        img{
+            border:none;
+            vertical-align: top;
+        }
+        a,a:hover,area{
+            text-decoration: none;
+            /*display: block;*/
+        }
+        em{
+            font-style:normal;
+        }
+        div,a,img {
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select:none;
+        }
+        .clearfix{zoom:1;}
+        .clearfix:before,.clearfix:after{content:'';display:table;}
+        .clearfix:after{clear:both;}
+        ul,li {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+        .lml-shoukuan{
+            position: relative;
+            width:100%;
+            font-family: "微软雅黑",Microsoft YaHei, Tahoma, Geneva, sans-serif;
+            background: #00afbf;
+            overflow:hidden;
+        }
+        .lml-shouzhi{
+            position:absolute;
+            left:7.7rem;
+            top:11rem;
+            width:1.21rem;
+            height:1.16rem;
+            background:url("https://gw.alicdn.com/tps/TB1PVLQPVXXXXa3aXXXXXXXXXXX-91-87.png") center top no-repeat;
+            background-size: 100% auto;;
+        }
+        .lml-shouzhi img{
+            -webkit-animation:lefttoright 2s infinite  ease-in-out;
+            animation:lefttoright 2s infinite  ease-in-out;
+
+        }
+        @keyframes lefttoright{
+            0%{
+                opacity:0.5;
+                -webkit-transform:translateX(0);
+                transform:translateX(0);
+            }
+            70%{
+                opacity:1;
+                -webkit-transform:translateX(-.56rem);
+                transform:translateX(-.56rem);
+            }
+            100%{
+                opacity:0.8;
+                -webkit-transform:translateX(-.56rem);
+                transform:translateX(-.56rem);
+            }
+        }
+        @-webkit-keyframes lefttoright{
+            0%{
+                opacity:0.5;
+                -webkit-transform:translateX(0);
+                transform:translateX(0);
+            }
+            70%{
+                opacity:1;
+                -webkit-transform:translateX(-.56rem);
+                transform:translateX(-.56rem);
+            }
+            100%{
+                opacity:0.8;
+                -webkit-transform:translateX(-.56rem);
+                transform:translateX(-.56rem);
+            }
+        }
+        .lml-bluebtn{
+            position: absolute;
+            left:50%;
+            top:8.21rem;
+            z-index: 9999;
+            margin-left:-2.1rem;
+            width:4.21rem;
+            height:1.21rem;
+            overflow:hidden;
+        }
+        .container_image .lml-btn{
+            position: absolute;
+            left:50%;
+            top:4.6rem;
+            z-index: 999999;
+            margin-left:-1.44rem;
+            width:2.88rem;
+            height:0.97rem;
+            background: url("https://gw.alicdn.com/tps/TB19irYPVXXXXbCaXXXXXXXXXXX-216-71.png") center top no-repeat;
+            background-size: 100% 100%;
+            font-size: 0.37rem;
+            color:#ffffff;
+            line-height: 0.97rem;
+            text-align: center;
+        }
+        .lml-paizi{
+            position: absolute;
+            left:50%;
+            top:4.12rem;
+            margin-left:-3.893rem;
+            width:7.786rem;
+            height:8.8rem;
+        }
+        .lml-paizi ul{
+            height:100%;
+        }
+        .lml-paizi li{
+            position: absolute;
+            /*float:left;*/
+            /*margin-left:-3.9rem;*/
+            top:0;
+            width:5.2rem;
+            perspective: 13rem;
+            -webkit-perspective: 13rem;
+        }
+        .lml-paizi li a{
+            position: relative;
+        }
+        .lml-zhuan .back {
+            transform: rotateY(0deg);
+            -webkit-transform: rotateY(0deg);
+            z-index:2;
+        }
+        .lml-zhuan .front {
+            transform: rotateY(180deg);
+            -webkit-transform: rotateY(180deg);
+            z-index:1
+        }
+
+        .front, .back {
+            width:100%;
+            height:100%;
+        }
+        .flipper {
+            transition:transform 0.6s ease-out;
+            -webkit-transition: transform .5s ease-in-out;
+            -moz-transition: transform .5s ease-in-out;
+            -ms-transition: transform .5s ease-in-out;
+            -o-transition: transform .5s ease-in-out;
+            -webkit-transform-style: preserve-3d; /*使其子类变换后得以保留 3d转换后的位置*/
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            -o-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            display:block;
+            position: relative;
+        }
+        .front, .back {
+            backface-visibility: hidden;
+            -webkit-backface-visibility:hidden;
+            transition: 0.6s ease-out;
+            -webkit-transition: .6s ease-out;
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            -o-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .front {
+            z-index: 2;
+            transform: rotateY(0deg);
+            -webkit-transform: rotateY(0deg);
+            -moz-transform: rotateY(0deg);
+            -ms-transform: rotateY(0deg);
+            -o-transform: rotateY(0deg);
+        }
+        .back {
+            z-index:1;
+            transform: rotateY(-180deg);
+            -webkit-transform: rotateY(-180deg);
+            -moz-transform: rotateY(-180deg);
+            -ms-transform: rotateY(-180deg);
+            -o-transform: rotateY(-180deg);
+        }
+        .lml-paizi .lml-big{
+            transform:translateY(0) scaleX(1) scaleY(1);
+            z-index: 9999;
+        }
+        .lml-paizi .lml-small{
+            width:4.94rem;
+            transform:translateY(0.37rem) scaleX(0.9) scaleY(0.8);
+        }
+        .lml-paizi .lml-smaller{
+            /*width:4.94rem;*/
+            z-index: 99;
+            animation:smaller 0.5s both  ease-in-out;
+            -webkit-animation:smaller 0.5s both  ease-in-out;
+            -moz-animation:smaller 0.5s both  ease-in-out;
+            -ms-animation:smaller 0.5s both  ease-in-out;
+            -o-animation:smaller 0.5s both  ease-in-out;
+        }
+        @keyframes smaller{
+            0%{
+                width:5.2rem;
+                transform:translateY(0) scaleX(1) scaleY(1);
+            }
+            100%{
+                width:4.94rem;
+                transform:translateY(0.37rem) scaleX(0.9) scaleY(0.8);
+            }
+        }
+        @-webkit-keyframes smaller{
+            0%{
+                width:5.2rem;
+                transform:translateY(0) scaleX(1) scaleY(1);
+            }
+            100%{
+                width:4.94rem;
+                transform:translateY(0.37rem) scaleX(0.9) scaleY(0.8);
+            }
+        }
+        @-moz-keyframes smaller{
+            0%{
+                width:5.2rem;
+                transform:translateY(0) scaleX(1) scaleY(1);
+            }
+            100%{
+                width:4.94rem;
+                transform:translateY(0.37rem) scaleX(0.9) scaleY(0.8);
+            }
+        }
+        @-ms-keyframes smaller{
+            0%{
+                width:5.2rem;
+                transform:translateY(0) scaleX(1) scaleY(1);
+            }
+            100%{
+                width:4.94rem;
+                transform:translateY(0.37rem) scaleX(0.9) scaleY(0.8);
+            }
+        }
+        @-o-keyframes smaller{
+            0%{
+                width:5.2rem;
+                transform:translateY(0) scaleX(1) scaleY(1);
+            }
+            100%{
+                width:4.94rem;
+                transform:translateY(0.37rem) scaleX(0.9) scaleY(0.8);
+            }
+        }
+        .lml-li00{
+            z-index: 9;
+            left:0;
+        }
+        .lml-li11{
+            z-index:99;
+            left:1.29rem;
+        }
+        .lml-li22{
+            z-index: 999;
+            left:2.57rem;
+        }
+        .lml-li0{
+            -webkit-animation:li0 1s both  linear;
+            animation:li0 1s both  linear;
+
+        }
+        @keyframes li0{
+            0%{
+                -webkit-transform:translateX(0);
+                transform:translateX(0);
+
+            }
+            25%{
+                -webkit-transform:translateX(2.6rem);
+                translateX(2.6rem);
+
+            }
+            50%{
+                -webkit-transform:translateX(0);
+                translateX(0);
+
+            }
+            100%{
+                -webkit-transform:translateX(2.6rem);
+                translateX(2.6rem);
+
+            }
+        }
+        @-webkit-keyframes li0{
+            0%{
+                -webkit-transform:translateX(0);
+                transform:translateX(0);
+
+            }
+            25%{
+                -webkit-transform:translateX(2.6rem);
+                translateX(2.6rem);
+
+            }
+            50%{
+                -webkit-transform:translateX(0);
+                translateX(0);
+
+            }
+            100%{
+                -webkit-transform:translateX(2.6rem);
+                translateX(2.6rem);
+
+            }
+        }
+        .lml-li2{
+            -webkit-animation:li2 1s both  linear;
+            animation:li2 1s both  linear;
+
+        }
+        @keyframes li2{
+            0%{
+                -webkit-transform:translateX(0);
+                transform:translateX(0);
+            }
+            25%{
+                -webkit-transform:translateX(-2.6rem);
+                transform:translateX(-2.6rem);
+
+            }
+            50%{
+                -webkit-transform:translateX(0);
+                transform:translateX(0);
+
+            }
+            100%{
+                -webkit-transform:translateX(-2.6rem);
+                translateX(-2.6rem);
+
+            }
+        }
+        @-webkit-keyframes li2{
+            0%{
+                -webkit-transform:translateX(0);
+                transform:translateX(0);
+
+            }
+            25%{
+                -webkit-transform:translateX(-2.6rem);
+                transform:translateX(-2.6rem);
+
+            }
+            50%{
+                -webkit-transform:translateX(0);
+                transform:translateX(0);
+
+            }
+            100%{
+                -webkit-transform:translateX(-2.6rem);
+                translateX(-2.6rem);
+
+            }
+        }
+
+        .container_image{
+            position: absolute;
+            left:50%;
+            top:3.6rem;
+            margin-left:-3.893rem;
+            width:7.786rem;
+            height:8.8rem;
+        }
+        .slide_img{
+            width: 100%;height: 100%;position:relative;z-index:1;
+        }
+        li{
+            width: 3.7rem;height: 5rem;overflow: hidden;position:absolute;top:0.26rem;
+        }
+        a{
+            display:block;position:relative;width:100%;height:100%;
+        }
+        img{
+            width: 100%;height: 100%;
+        }
+        li{width:4.94rem;height: 6.46rem;}
+        li.on{
+            width:5.2rem;height: 6.8rem;
+        }
+        li.left{left:0;}
+        li.right{right:0;}
+        .lml-p1{
+            position: absolute;
+            left: 3.8rem;
+            top: 16.5rem;
+            z-index: 99999;
+            font-size: 0.81rem;
+            line-height:0.81rem;
+            font-weight:bold;
+            color:#ff4200;
+        }
+        .lml-p2{
+            position: absolute;
+            left: 4.25rem;
+            top: 17.56rem;
+            z-index: 99999;
+            font-size: 0.4rem;
+            line-height:0.4rem;
+            color:#2e2e2e;
+        }
+        .lml-p3{
+            position: absolute;
+            left: 5.28rem;
+            top: 28rem;
+            z-index: 99999;
+            font-size: 0.61rem;
+            line-height:0.61rem;
+            font-weight:bold;
+            color:#ff4200;
+        }
+        .lml-p4{
+            position: absolute;
+            left: 5.98rem;
+            top: 31.07rem;
+            z-index: 99999;
+            font-size: 0.4rem;
+            line-height:0.4rem;
+            font-weight:bold;
+            color:#2e2e2e;
+        }
+        .lml-p5{
+            position: absolute;
+            left: 3.33rem;
+            top: 31.7rem;
+            font-size: 0.33rem;
+            line-height:0.33rem;
+            color:#2e2e2e;
+        }
+        .lml-p6{
+            position: absolute;
+            left: 6rem;
+            top: 24.85rem;
+            font-size: 0.45rem;
+            line-height:1;
+            font-weight:bold;
+            color:#ff4504;
+        }
+        .lml-mengceng{
+            position: fixed;
+            z-index: 9999999;
+            left:0;
+            top:0;
+            width:100%;
+            height: 100%;
+            overflow-y: scroll;
+            background:rgba(28,35,37,0.9);
+        }
+        .lml-mengceng-div{
+            width: 9.17rem;
+            padding-left: 0.58rem;
+            font-size: .4rem;
+            line-height: 0.7rem;
+            color: #ffffff;
+            padding-bottom:2.73rem;
+        }
+
+        .lml-mengceng strong{
+            display:block;
+            padding-top:4.28rem;
+            padding-bottom:1.48rem;
+            font-size:.62rem;
+            line-height: 1;
+        }
+        .lml-xx{
+            position: absolute;
+            right:.64rem;
+            top:4.28rem;
+            width:0.77rem;
+            height:0.77rem;
+        }
+    </style>
+    <script>
+        (function(b){
+            var a={};a.Html=b.getElementsByTagName("html")[0];
+            a.widthProportion=function(){
+                var c=(b.body&&b.body.clientWidth||a.Html.offsetWidth)/750;
+                return c>1?1:c<0.4?0.4:c;};a.changePage=function(){
+                a.Html.setAttribute("style","font-size:"+a.widthProportion()*75+"px !important; height: auto");
+            };a.changePage();setInterval(a.changePage,100)})(document);
+    </script>
+</head>
+<body>
+
+<div class="lml-shoukuan">
+    <div class="lml-img">
+        <img src="https://gw.alicdn.com/tps/TB1SUzYPVXXXXcHXVXXXXXXXXXX-750-204.jpg" alt="图片" width="100%">
+        <img src="https://gw.alicdn.com/tps/TB1jVQgPVXXXXb4XpXXXXXXXXXX-750-175.jpg" alt="图片" width="100%">
+        <img src="https://gw.alicdn.com/tps/TB1NCMfPVXXXXa1XpXXXXXXXXXX-750-180.jpg" alt="图片" width="100%">
+        <img src="https://gw.alicdn.com/tps/TB1FHj_PVXXXXcyXFXXXXXXXXXX-750-213.jpg" alt="图片" width="100%">
+        <img src="https://gw.alicdn.com/tps/TB1BVjNPVXXXXbfapXXXXXXXXXX-750-193.jpg" alt="图片" width="100%">
+        <img src="https://gw.alicdn.com/tps/TB1hMbwPVXXXXXtaVXXXXXXXXXX-750-247.jpg" alt="图片" width="100%">
+        <img src="https://gw.alicdn.com/tps/TB1D9ZnPVXXXXarXXXXXXXXXXXX-750-247.jpg" alt="图片" width="100%">
+        <img src="https://gw.alicdn.com/tps/TB1XpAnPVXXXXa4XXXXXXXXXXXX-750-302.jpg" alt="图片" width="100%">
+        <img src="https://gw.alicdn.com/tps/TB1XgrOPVXXXXXvapXXXXXXXXXX-750-288.jpg" alt="图片" width="100%">
+        <img src="https://gw.alicdn.com/tps/TB1ZcAcPVXXXXXfXFXXXXXXXXXX-750-229.jpg" alt="图片" width="100%">
+        <img src="https://gw.alicdn.com/tps/TB1.mwuPVXXXXXTXXXXXXXXXXXX-750-211.jpg" alt="图片" width="100%">
+        <img src="https://gw.alicdn.com/tps/TB1z8LCPVXXXXcwaFXXXXXXXXXX-750-283.jpg" alt="图片" width="100%">
+        <img src="https://gw.alicdn.com/tps/TB1.Qn2PVXXXXbuXVXXXXXXXXXX-750-264.jpg" alt="图片" width="100%">
+        <img src="https://gw.alicdn.com/tps/TB16cIfPVXXXXcgXpXXXXXXXXXX-750-221.jpg" alt="图片" width="100%">
+        <img src="https://gw.alicdn.com/tps/TB1.rjCPVXXXXXUaFXXXXXXXXXX-750-251.jpg" alt="图片" width="100%">
+        <img src="https://gw.alicdn.com/tps/TB1oqf9PVXXXXcNXFXXXXXXXXXX-750-234.jpg" alt="图片" width="100%">
+        <img src="https://gw.alicdn.com/tps/TB1u6PLPVXXXXX1apXXXXXXXXXX-750-277.jpg" alt="图片" width="100%">
+    </div>
+    <div class="lml-p1">147万</div>
+    <div class="lml-p2">147万</div>
+    <div class="lml-p3">4.14%</div>
+    <div class="lml-p4">4.14%</div>
+    <div class="lml-p5">(截止时间2017年3月1日)</div>
+    <div class="lml-p6">5.5%</div>
+    <div class="container_image">
+        <ul class="content J_tb_targetlist slide_img">
+            <li class="on lml-li00">
+                <a href="javascript:void(0)" target="_blank">
+                    <div class="front"><img src="https://gw.alicdn.com/tps/TB1Qp6.PVXXXXchXFXXXXXXXXXX-390-510.png" alt="图片" width="100%" class="front"></div>
+                    <div class="back"> <img src="" alt="" width="100%"></div>
+                    <div class="lml-btn back"  style="display:none;">选择此牌</div>
+                    <div class="lml-btn front"  style="display:none;">选择此牌</div>
+                </a>
+            </li>
+            <li class="on lml-li11">
+                <a href="javascript:void(0)"  target="_blank">
+                    <div class="front"><img src="https://gw.alicdn.com/tps/TB1RZb7PVXXXXabXVXXXXXXXXXX-390-510.png" alt="图片" width="100%"></div>
+                    <div class="back"> <img src="" alt=""></div>
+                    <div class="lml-btn back"  style="display:none;">选择此牌</div>
+                    <div class="lml-btn front"  style="display:none;">选择此牌</div>
+                </a>
+            </li>
+            <li class="on lml-li22">
+                <a href="javascript:void(0)"  target="_blank">
+                    <div class="front"><img src="https://gw.alicdn.com/tps/TB1W5bZPVXXXXcSXVXXXXXXXXXX-390-510.png" alt="图片" width="100%"></div>
+                    <div class="back"><img src="" alt="" width="100%"></div>
+                    <div class="lml-btn back"  style="display:none;">选择此牌</div>
+                    <div class="lml-btn front"  style="display:none;">选择此牌</div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="lml-bluebtn">
+        <img src="https://gw.alicdn.com/tps/TB1xUvJPVXXXXcdapXXXXXXXXXX-316-91.png" alt="图片" width="100%" height="100%">
+    </div>
+    <div class="lml-shouzhi">
+        <img src="https://gw.alicdn.com/tps/TB1Oe3dPVXXXXXwXFXXXXXXXXXX-91-87.png" alt="图片" width="100%" height="100%">
+    </div>
+    <div class="lml-rule">
+        <img src="https://gw.alicdn.com/tps/TB18sQdPVXXXXcNXpXXXXXXXXXX-750-204.jpg" alt="图片" width="100%">
+    </div>
+    <div class="lml-mengceng" style="display:none;">
+        <div class="lml-mengceng-div">
+            <strong>活动规则</strong>
+            <em>活动时间：</em>2017年3月15日-3月31日<br/>
+
+            <em>活动对象：</em>天猫全网卖家，和淘宝企业类型卖家<br/>
+
+            <em>活动规则：</em><br/>
+            本次活动期间，首次开通余利宝的“保底自动转入”（即设置每日一定金额留在企业支付宝余额，其余资金22:00自动归集到余利宝），
+            就可获得6万额度的免费提前收款卡。同一企业名称的多个支付宝账户开通的，仅能获得一张收款卡。将于活动结束后10个工作日内发放。<br/>
+            本活动福利与3月其他余利宝活动不可叠加，一个客户仅能获得一次福利。<br/><br/>
+            <em>注意事项：</em><br/>
+            <p>1、开通余利宝保底自动转入可以通过打开“千牛-应用中心-金融类别-余利宝插件”进行操作。</p>
+            <p>2、  提前收款卡：用于抵扣提前收款服务费，在提前收款卡金额内可抵扣收款金额对应的服务费，在有效期内可多次使用。提前收款卡面值为可免于支付提前收款服务费的提前收款金额。 店铺准入淘宝、天猫订单贷款的前提下，在申请订单提前放款的页面可直接勾选该卡，最后实际支付的费用会自动扣减该卡的优惠。</p>
+            <p>3、  活动过程中如发现有碍于其他卖家公平参与本活动或违反本活动目的之行为，网商银行&蚂蚁小贷有权取消有此行为的卖家参加本活动的资格或因活动所获的优惠。</p>
+        </div>
+        <div class="lml-xx"><img src="https://gw.alicdn.com/tps/TB1wrw1PVXXXXatXpXXXXXXXXXX-58-58.png" alt="" width="100%" height="100%"></div>
+    </div>
+</div>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+    jQuery(".lml-rule").on("click",function(){
+        jQuery(".lml-mengceng").show();
+    })
+    jQuery(".lml-xx").on("click",function(){
+        jQuery(".lml-mengceng").hide();
+    })
+    var bool;
+    $(".lml-bluebtn").on("click",function(){
+        $(".lml-bluebtn").hide();
+        $("li").eq(0).addClass("lml-li0");
+        $("li").eq(2).addClass("lml-li2");
+        $("ul").css({"margin-top": "-27px"});
+        bool=true;
+        setTimeout(function(){
+            i_slide($(".container_image"),newoption);
+//            默认的按钮
+            $("li").eq(2).find(".lml-btn").show();
+            $("li").eq(2).siblings("li").find(".lml-btn").hide();
+        },500);
+
+
+    });
+
+
+
+    $(".lml-btn").on("click",function(){
+        var _self=this;
+        //获取数据
+        if(bool){
+            chouse3(_self);
+        }
+        else{
+            chouse2(_self);
+        }
+        var index=$(_self).parents("li").index();
+        var img_url=$(_self).parents("li").find(".back img").attr("src");//设置
+        var success_img="https://gw.alicdn.com/tps/TB1TUwdPVXXXXaqaXXXXXXXXXXX-390-510.png";
+        var no_success_img="https://gw.alicdn.com/tps/TB1St3fPVXXXXcIXVXXXXXXXXXX-390-510.png";
+        $(_self).parents("a").addClass("lml-zhuan");
+
+
+        if(img_url==success_img){
+            success(_self);
+        }
+        else{
+            fail(_self);
+            bool=false;
+        }
+    })
+
+    function success(_self){
+        $(_self).parents("li").find(".lml-btn.back").show().text("立即开通")
+        setTimeout(function(){
+            $(_self).parents("li").find("a").attr({"href":"aliim:directuseplugin?appkey=23263791"});
+        },500);
+    }
+    function fail(_self){
+        $(_self).parents("li").find(".lml-btn").hide();
+    }
+
+
+
+    function chouse1(_self){
+        var img_url1 = Math.random() >= 0.5 ?　'https://gw.alicdn.com/tps/TB1TUwdPVXXXXaqaXXXXXXXXXXX-390-510.png' : 'https://gw.alicdn.com/tps/TB1St3fPVXXXXcIXVXXXXXXXXXX-390-510.png';
+        $(_self).parents("li").find(".back img").attr({"src":img_url1});
+    }
+    function chouse2(_self){
+        var img_url2 = "https://gw.alicdn.com/tps/TB1TUwdPVXXXXaqaXXXXXXXXXXX-390-510.png";
+        $(_self).parents("li").find(".back img").attr({"src":img_url2});
+    }
+    function chouse3(_self){
+        var img_url3 = "https://gw.alicdn.com/tps/TB1St3fPVXXXXcIXVXXXXXXXXXX-390-510.png";
+        $(_self).parents("li").find(".back img").attr({"src":img_url3});
+    }
+
+    function i_slide(obj,opt){
+        var option={
+            speed:"3000",//间隔运动时间
+            a_speed:"500",//运动时间
+            conuntW:"1180",//整体内容宽度
+            countH:"680",//整体内容高度
+            w1:"460",//大图宽度
+            h1:"625",//大图高度
+            w2:"420",//小图宽度
+            h2:"570"//小图高度
+        }
+
+        var ul=obj.find("ul.slide_img");
+        var con=ul.find(".on");
+        var li=ul.children("li");
+        var lion=ul.children("li.on");
+        var length=li.length;
+        var half=parseInt(length/2);
+        var number;
+        var T;
+        var start;
+        //参数初始化,看是否有新的参数传入，传入则更新初始化设置
+        var opts = $.extend(option, opt || {});
+        var speed=opts.speed;
+        var a_speed=opts.a_speed;
+        var conuntW=opts.conuntW;//整体内容宽度
+        var countH=opts.countH;//整体内容高度
+        var w1=opts.w1;//大图宽度
+        var h1=opts.h1;//大图高度
+        //大图left
+        var left1=(opts.conuntW-opts.w1)/2;
+        //大图top
+        var top1=(opts.countH-opts.h1)/2;
+        var left2=opts.conuntW-opts.w2;//小图left
+        //小图top
+        var top2=(opts.countH-opts.h2)/2;
+        var w2=opts.w2;//小图宽度
+        var h2=opts.h2;//小图高度
+
+        if(length%2==0){
+            half=half-1;
+        }
+
+        //默认轮播
+        clearInterval(T)
+        number=parseInt(now_show(li))
+        pos_dex(number)
+//        T= setInterval(function(){
+//            ss();
+//            pos_dex(number)
+//        },speed)
+        //重新定位
+
+        function pos_dex(N){
+            self.canswitch = false;
+            var next;
+            var z=li.length;
+            li.eq(N).attr("class","on");
+            for(var i=1;i<=half;i++){
+                //right
+                next=N+i;
+                z=z-i
+                if(next==length){
+                    next=0;
+                }
+                li.eq(next).css("z-index",z);
+                li.eq(next).attr("class","right");
+                li.eq(next).animate({"left":left2,"width":w2,"height":h2,"top":top2},a_speed);
+
+                //left
+                var pre=N-i;
+                if(pre==-1){
+                    pre=length-1;
+                }
+                li.eq(pre).attr("class","left");
+                li.eq(pre).css("z-index",z);
+                li.eq(pre).animate({"left":"0px","width":w2,"height":h2,"top":top2},a_speed);
+            }
+            //mid
+            if(length%2==0){
+                li.eq(next+1).attr("class","mid");
+                li.eq(next+1).css("z-index",z-2);
+                li.eq(next+1).animate({"left":left2,"width":w2,"height":h2,"top":top2},a_speed);
+            }
+            li.eq(N).css("z-index",parseInt(length)+3);
+            li.eq(N).animate({"left":left1,"width":w1,"height":h1,"top":top1},a_speed);
+            setTimeout(function(){
+                self.canswitch = true;
+            }, a_speed)
+        }
+        //当前显示的是第几个图片
+        function now_show(chi){
+            var now=0;
+            for(var i=0;i<chi.length;i++){
+                var li=chi[i];
+                if($(li).hasClass("on")){
+                    now=i;
+                }
+            }
+            return now;
+        }
+        //手指滑动
+        var startx,starty,tip;
+        //获得角度
+        function getAngle(angx, angy) {
+            return Math.atan2(angy, angx) * 180 / Math.PI;
+        };
+        //根据起点终点返回方向 1向上 2向下 3向左 4向右 0未滑动
+        function getDirection(startx, starty, endx, endy) {
+            var angx = endx - startx;
+            var angy = endy - starty;
+            var result = 0;
+
+            //如果滑动距离太短
+            if (Math.abs(angx) < 2 && Math.abs(angy) < 2) {
+                return result;
+            }
+
+            var angle = getAngle(angx, angy);
+            if (angle >= -135 && angle <= -45) {
+                result = 1;
+            } else if (angle > 45 && angle < 135) {
+                result = 2;
+            } else if ((angle >= 135 && angle <= 180) || (angle >= -180 && angle < -135)) {
+                result = 3;
+            } else if (angle >= -45 && angle <= 45) {
+                result = 4;
+            }
+
+            return result;
+        }
+        //手指接触屏幕
+        obj[0].addEventListener("touchstart", function(e) {
+            startx = e.touches[0].pageX;
+            starty = e.touches[0].pageY;
+        }, false);
+        //手指离开屏幕
+        obj[0].addEventListener("touchend", function(e) {
+            var endx, endy;
+            endx = e.changedTouches[0].pageX;
+            endy = e.changedTouches[0].pageY;
+            var direction = getDirection(startx, starty, endx, endy);
+            switch (direction) {
+                case 0:
+                    tip = 2;
+
+                    break;
+                case 1:
+                    tip = 2;
+
+                    break;
+                case 2:
+                    tip = 2;
+
+                    break;
+                case 3:
+                    tip = 1;
+
+                    break;
+                case 4:
+                    tip = 0;
+
+                    break;
+                default:
+            }
+            clearInterval(T);
+            number=parseInt(now_show(li));
+            if(tip==0){
+                //向前
+                if(number==0){
+                    number=length-1;
+                }else{
+                    number=number-1;
+                }
+            }else if(tip==1){
+                //向后
+                if(number==length-1){
+                    number=0;
+                }else{
+                    number=number+1;
+                }
+            }
+                if(self.canswitch&&$("li").eq(0).find(".back img").attr("src")!="https://gw.alicdn.com/tps/TB1TUwdPVXXXXaqaXXXXXXXXXXX-390-510.png"&&$("li").eq(1).find(".back img").attr("src")!="https://gw.alicdn.com/tps/TB1TUwdPVXXXXaqaXXXXXXXXXXX-390-510.png"&&$("li").eq(2).find(".back img").attr("src")!="https://gw.alicdn.com/tps/TB1TUwdPVXXXXaqaXXXXXXXXXXX-390-510.png"){
+                    pos_dex(number);
+//                T= setInterval(function(){
+//                    ss();
+//                    pos_dex(number)
+//                },speed)
+                }
+
+            //增加的按钮
+            if($("li").eq(0).find(".back img").attr("src")!="https://gw.alicdn.com/tps/TB1TUwdPVXXXXaqaXXXXXXXXXXX-390-510.png"&&$("li").eq(1).find(".back img").attr("src")!="https://gw.alicdn.com/tps/TB1TUwdPVXXXXaqaXXXXXXXXXXX-390-510.png"&&$("li").eq(2).find(".back img").attr("src")!="https://gw.alicdn.com/tps/TB1TUwdPVXXXXaqaXXXXXXXXXXX-390-510.png") {
+
+                if ($("li").eq(number).find(".back img").attr("src") != "https://gw.alicdn.com/tps/TB1St3fPVXXXXcIXVXXXXXXXXXX-390-510.png") {
+                    $("li").eq(number).find(".lml-btn").show();
+                    $("li").eq(number).siblings("li").find(".lml-btn").hide();
+                }
+                else {
+                    $("li").find(".lml-btn").hide();
+                }
+
+            }
+        }, false);
+        function ss(){
+            number=number+1;
+            if(number==length){
+                number=0;
+            }
+        }
+
+
+    }
+    var newoption={
+        speed:"3000",//间隔运动时间
+        a_speed:"500",//运动时间
+        conuntW:$('.container_image').width(),//整体内容宽度
+        countH:$('.container_image').height(),//整体内容高度
+        w1:$('.on').width(),//大图宽度
+        h1:$('.on').height(),//大图高度
+        w2:$('.on').width()/1.1,//小图宽度
+        h2:$('.on').height()/1.1//小图高度
+    }
+
+
+
+
+</script>
+
+<script>
+
+</script>
+
+</body>
+</html>
